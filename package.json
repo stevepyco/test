@@ -1,0 +1,32 @@
+{
+  "name": "js-exercisies",
+  "version": "1.0.0",
+  "description": "JS Assessment",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose",
+    "test:watch": "jest --verbose --watch",
+    "test:coverage": "jest --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevepyco/test.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Thuan Dong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevepyco/test/issues"
+  },
+  "homepage": "https://github.com/stevepyco/test#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0"
+  }
+}
