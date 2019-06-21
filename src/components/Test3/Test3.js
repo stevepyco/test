@@ -1,17 +1,18 @@
 import {
   CUSTOMER_TYPE,
   USER_TYPE,
+  RETAIL_TYPE,
   LOYALTY_YEAR_TO_BE_PREMIUM_CUSTOMER,
   DISCOUNT_AMOUNT,
   DISCOUNT_RATE
-} from '../constants/constants';
+} from '../../constants/constants';
 
 export class User {
   constructor(fullname, type, createdDate) {
     this.fullname = fullname;
     this.createdDate = createdDate;
     if (type === USER_TYPE.CUSTOMER) {
-      this.type = this.yearOfLoyalty >= LOYALTY_YEAR_TO_BE_PREMIUM_CUSTOMER ? CUSTOMER_TYPE.CUSTOMER_PREMIUM : CUSTOMER_TYPE.CUSTOMER_REGULAR;
+      this.type = this.yearOfLoyalty >= LOYALTY_YEAR_TO_BE_PREMIUM_CUSTOMER ? CUSTOMER_TYPE.PREMIUM : CUSTOMER_TYPE.REGULAR;
     } else {
       this.type = type;
     }
@@ -23,8 +24,9 @@ export class User {
 }
 
 export class Bill {
-  constructor (user, amount) {
+  constructor (user, retailType, amount) {
     this.user = user;
+    this.retailType = retailType;
     this.amount = amount;
   }
   
@@ -39,7 +41,7 @@ export class Bill {
   }
 
   handleDiscount() {
-    const amount = (this.user.type === USER_TYPE.GROCERY) ? this.amount : this.discountPaymentByPercentage();
+    const amount = (this.retailType === RETAIL_TYPE.GROCERY) ? this.amount : this.discountPaymentByPercentage();
     return this.discountPaymentByAmount(amount)
   }
 }

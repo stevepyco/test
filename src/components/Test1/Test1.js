@@ -1,4 +1,4 @@
-import { isArray, isString } from '../utils/utils'
+import { isArray, isString } from '../../utils/utils'
 
 /**
  * @export store function
@@ -28,7 +28,7 @@ export function load(text) {
 	let result = [];
   if (!isString(text) || !text) return result;
   
-  result = text.split('\n').map(item => {
+  result = text.split('\\n').map(item => {
     const obj = {};
     item.split(';').forEach(data => {
       if (data) {

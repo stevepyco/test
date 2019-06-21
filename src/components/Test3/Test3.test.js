@@ -1,5 +1,6 @@
-import { User, Bill } from './store';
-import { CUSTOMER_TYPE, USER_TYPE, LOYALTY_YEAR_TO_BE_PREMIUM_CUSTOMER, DISCOUNT_AMOUNT, DISCOUNT_RATE } from '../constants/constants';
+import { User, Bill } from './Test3';
+
+jest.mock('../../constants/constants');
 
 describe('Discount', () => {
   beforeEach(() => {
@@ -9,7 +10,7 @@ describe('Discount', () => {
     // Arrange
     const fakeDate = new Date("Thu Dec 19 2019");
     const user = new User("Thuan Dong", 'EMPLOYEE', fakeDate);
-    const bill = new Bill(user, 1000);
+    const bill = new Bill(user, 'MALL', 1000);
 
     // Act
     const billDiscountedByPercentage = bill.discountPaymentByPercentage();
@@ -24,7 +25,7 @@ describe('Discount', () => {
     // Arrange
     const fakeDate = new Date("Thu Dec 19 2019");
     const user = new User("Thuan Dong", 'AFFILIATE', fakeDate);
-    const bill = new Bill(user, 1000);
+    const bill = new Bill(user, 'MALL', 1000);
     
     // Act
     const billDiscountedByPercentage = bill.discountPaymentByPercentage();
@@ -39,7 +40,7 @@ describe('Discount', () => {
     // Arrange
     const fakeDate = new Date("Thu Dec 19 2015");
     const user = new User("Thuan Dong", 'CUSTOMER', fakeDate);
-    const bill = new Bill(user, 1000);
+    const bill = new Bill(user, 'MALL', 1000);
     
     // Act
     const billDiscountedByPercentage = bill.discountPaymentByPercentage();
@@ -54,7 +55,7 @@ describe('Discount', () => {
     // Arrange
     const fakeDate = new Date("Thu Dec 19 2019");
     const user = new User("Thuan Dong", 'CUSTOMER', fakeDate);
-    const bill = new Bill(user, 1000);
+    const bill = new Bill(user, 'MALL', 1000);
     
     // Act
     const billDiscountedByPercentage = bill.discountPaymentByPercentage();
@@ -69,7 +70,7 @@ describe('Discount', () => {
     // Arrange
     const fakeDate = new Date("Thu Dec 19 2019");
     const user = new User("Thuan Dong", 'CUSTOMER', fakeDate);
-    const bill = new Bill(user, 990);
+    const bill = new Bill(user, 'MALL', 990);
     
     // Act
     const billDiscountedPaymentByAmount = bill.discountPaymentByAmount(990);
@@ -80,12 +81,12 @@ describe('Discount', () => {
     expect(billDiscountedLastResult).toEqual(945);
   });
 
-  describe('if user is a grocery, discount', () => {
+  describe('if the retail is a grocery, discount', () => {
     test('$5 on every $100 on the bill', () => {
       // Arrange
       const fakeDate = new Date("Thu Dec 19 2015");
-      const user = new User("Thuan Dong", 'GROCERY', fakeDate);
-      const bill = new Bill(user, 990);
+      const user = new User("Thuan Dong", 'CUSTOMER', fakeDate);
+      const bill = new Bill(user, 'GROCERY', 990);
     
       // Act
       const billDiscountedPaymentByAmount = bill.discountPaymentByAmount(990);
@@ -99,8 +100,8 @@ describe('Discount', () => {
     test('0% because it\'s not allowed to calculate by percentage', () => {
       // Arrange
       const fakeDate = new Date("Thu Dec 19 2015");
-      const user = new User("Thuan Dong", 'GROCERY', fakeDate);
-      const bill = new Bill(user, 990);
+      const user = new User("Thuan Dong", 'CUSTOMER', fakeDate);
+      const bill = new Bill(user, 'GROCERY', 990);
     
       // Act
       const billDiscountedLastResult = bill.handleDiscount();

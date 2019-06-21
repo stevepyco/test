@@ -1,4 +1,8 @@
-import { store, load } from './data';
+import { store, load } from './Test1';
+
+const escape = string => {
+  return string.replace('\n', '\\n');
+};
 
 describe('Handle store function', () => {
 	describe('return an empty string', () => {
@@ -213,7 +217,7 @@ describe('Handle load function', () => {
     const expected = [{ key1: 'value1', key2: 'value2' }, { keyA: 'valueA' }];
 
     // Act
-    const array = load(text);
+    const array = load(escape(text));
 
     // Assert
     expect(array).toStrictEqual(expected);
@@ -225,7 +229,7 @@ describe('Handle load function', () => {
     const expected = 'value1=';
 
     // Act
-    const array = load(text);
+    const array = load(escape(text));
 
     // Assert
     expect(array[0]['key1']).toEqual(expected);
@@ -237,7 +241,7 @@ describe('Handle load function', () => {
     const expected = [{ key1: 'value1', key2: 'value2' }, { keyA: 'valueA' }];
 
     // Act
-    const array = load(text);
+    const array = load(escape(text));
 
     // Assert
     expect(array).toStrictEqual(expected);
