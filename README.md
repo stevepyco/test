@@ -1,12 +1,11 @@
-# JS test
+# **JS TEST**
 
-## Folder structure
+## FOLDER STRUCTURE
 
 ```
 test/
 └─── README.md
 └─── .babelrc
-└─── .env
 └─── .gitignore
 └─── package.json
 └─── jest.config.js
@@ -14,10 +13,10 @@ test/
 └─── src/
 │   └─── assets
 │   └─── constants
-│   └─── test1/
+│   └─── Test1/
 │   │   └─── test1.js
 │   │   └─── test1.test.js
-│   └─── test3/
+│   └─── Test3/
 │   │   └─── test3.js
 │   │   └─── test3.test.js
 │   └─── utils/
@@ -26,16 +25,21 @@ test/
 │   └─── index.js
 └─── public/
 │   └─── index.html
-│   └─── bundle.js
-│   └─── main.css
 ```
-   
 
+## HOW TO RUN
+* First of all, please run the command **npm install** to install all the needed.
+* Afterwards, you see the folder structure that I have already set up the configuration file and it can run with a simple command line.
+* To run the web in development environment.
+```
+npm run start
+```
+* To build and manipulate the app.
+```
+npm run build
+```
 
-## Get started
-Run `npm install` for the first time to install all the needed.
-
-## How to test
+## HOW TO TEST
 * run all unit test suites
 ```
 npm run test
@@ -48,3 +52,15 @@ npm run test:watch
 ```
 npm run test:coverage
 ``` 
+
+## TIME COMPLEXITY
+### Test 1
+* Time Complexity for `store` function: 
+```
+O(n²)
+```
+* Time Complexity for `load` function:
+```
+O(n²)
+```
+Reason for both functions are ***O(n²)*** because they are iterating over two different collections using two nested loops
